@@ -5,7 +5,19 @@
 package com.mycompany.tutorsys;
 
 import java.awt.Image;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,7 +39,7 @@ public class LOGIN extends javax.swing.JFrame {
         Image image = imageIcon.getImage();
         
         // Modificar el tamaño de la imagen (por ejemplo, 300x300 píxeles)
-        Image scaledImage = image.getScaledInstance(520, 350, Image.SCALE_SMOOTH);
+        Image scaledImage = image.getScaledInstance(810, 540, Image.SCALE_SMOOTH);
         
         // Crear un nuevo ImageIcon con la imagen escalada
         ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
@@ -45,37 +57,46 @@ public class LOGIN extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtUsu = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtPass = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        jLabel1.setText("USSER:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, -1, -1));
+        getContentPane().add(txtUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 192, 140, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel3.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        jLabel3.setText("PASS:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
+        getContentPane().add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 140, 30));
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setText("INGRESAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    
+    /*
+    *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -111,7 +132,33 @@ public class LOGIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JTextField txtUsu;
     // End of variables declaration//GEN-END:variables
+
+//private boolean validarUsuario(String usuario, String contraseña) throws SQLException {
+       // String consulta = "SELECT * FROM usuarios WHERE nombre = ? AND contraseña = ?";
+        //PreparedStatement statement = Conexion.prepareStatement(consulta);
+        //statement.setString(1, usuario);
+        //statement.setString(2, contraseña);
+        //ResultSet resultSet = statement.executeQuery();
+
+        // Si la consulta devuelve al menos un resultado, el usuario y la contraseña son válidos
+        //return resultSet.next();
+  //  }
+   
+   
+   private void guardar(String logMessage) {
+    String filePath = "C:\\Users\\PAUL ORMAZA\\Documents\\NetBeansProjects\\Usuario.txt";
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+        writer.write(logMessage);
+        writer.newLine();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 }
