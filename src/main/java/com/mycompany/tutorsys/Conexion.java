@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class Conexion {
     private String url="jdbc:mysql://localhost:3306/tienda_celulares?zeroDateTimeBehavior=CONVERT_TO_NULL";
     private String usuario="root";
-    private String clave="12345678";
+    private String clave="12345678"; 
     
     public ResultSet EjecutaSQL(String Sql) throws ClassNotFoundException{
         ResultSet resultado=null;
